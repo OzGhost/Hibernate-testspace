@@ -13,6 +13,11 @@ plugins {
     id 'application'
 }
 
+task copy(type: Copy, group: "Custom", description: "Copies sources to the dest directory") {
+    from "src/main/java/META-INF"
+    into "build/classes/java/main/META-INF"
+}
+
 // Define the main class for the application
 mainClassName = 'App'
 
@@ -21,6 +26,7 @@ dependencies {
     compile 'com.google.guava:guava:23.0'
 	compile files('libs/ojdbc6.jar')
 	compile 'org.hibernate:hibernate-core:5.3.2.Final'
+	compile group: 'postgresql', name: 'postgresql', version: '9.0-801.jdbc4'
 
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
@@ -32,3 +38,5 @@ repositories {
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
 }
+
+
